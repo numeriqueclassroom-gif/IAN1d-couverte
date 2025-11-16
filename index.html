@@ -103,9 +103,10 @@
 
         /* En-tête de Tuile */
         .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            /* Utilisation de grid pour un alignement parfait de l'icône et du texte */
+            display: grid;
+            grid-template-columns: auto 1fr auto; /* Icône | Contenu | Flèche */
+            align-items: center; /* Alignement vertical central */
             padding: 25px 35px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -135,6 +136,12 @@
         .section-card.expanded .section-header i.amiral-icon {
             color: var(--amiral-accent-orange);
         }
+
+        /* Contenu du titre (au centre de la grille) */
+        .section-header-content {
+            /* Aucune modification nécessaire ici grâce au grid */
+        }
+
 
         /* Numéro de Section */
         .section-number {
@@ -445,13 +452,27 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2em; }
             .section-title { font-size: 1.5em; }
-            .section-header { padding: 20px 25px; flex-direction: column; align-items: flex-start; }
-            .section-header i.amiral-icon { margin-bottom: 15px; margin-right: 0; }
+            .section-header { 
+                grid-template-columns: 1fr auto; /* Retirer l'icône de la grille pour le mobile */
+                padding: 20px 25px; 
+                flex-direction: column; 
+                align-items: flex-start; 
+            }
+            .section-header i.amiral-icon { 
+                /* L'icône est retirée du flux principal sur mobile pour simplifier l'alignement */
+                display: none; 
+            }
             .section-header-content { width: 100%; }
             .section-meta { margin-top: 10px; }
             .section-card.expanded .section-content { padding: 20px; }
             .section-toggle { margin-top: 10px; align-self: flex-end; margin-left: 0; }
             .reveal-btn { padding: 12px 20px; }
+        }
+        /* Rétablissement de l'icône sur mobile pour le style */
+        @media (min-width: 769px) {
+            .section-header i.amiral-icon {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -601,7 +622,7 @@ Format tableau avec colonnes claires.</div>
 
                 </div>
                 
-                <!-- NOUVELLE DÉMO : GÉNÉRATION D'IMAGE -->
+                <!-- DÉMO 4 : GÉNÉRATION D'IMAGE -->
                 <button class="reveal-btn" onclick="revealDemo('demo1-4', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 4 (Création d'images)</button>
 
                 <div id="demo1-4" class="demo-box">

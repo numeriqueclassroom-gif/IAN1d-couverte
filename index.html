@@ -16,7 +16,7 @@
             --amiral-blue-dark: #0A3D62; /* Bleu foncé principal (Texte, Hero) */
             --amiral-cyan: #0672A4;      /* Cyan (Accents, liens) */
             --amiral-teal: #00A69D;      /* Teal (Tuile active, icônes) */
-            --amiral-accent-orange: #F47216; /* NOUVEL ACCENT ORANGE */
+            --amiral-accent-orange: #F47216; /* ACCENT ORANGE VIF */
             --amiral-light-bg: #F7F9FA;  /* Fond de page très clair */
             --amiral-card-bg: #FFFFFF;   /* Fond des tuiles */
             --amiral-text-dark: #2C3E50; /* Texte général */
@@ -384,7 +384,27 @@
             flex-wrap: wrap;
             margin: 15px 0 25px 0;
         }
-        .tool-btn:hover { background: var(--amiral-teal); transform: translateY(-1px); }
+        /* Style bulle appliqué aux boutons outils */
+        .tool-btn {
+            padding: 10px 18px;
+            background: var(--amiral-cyan);
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombre de bulle légère */
+            transition: all 0.2s;
+        }
+
+        .tool-btn:hover { 
+            background: var(--amiral-teal); 
+            transform: translateY(-1px); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Effet de profondeur au survol */
+        }
+
         .badge {
             font-size: 0.75em;
             padding: 3px 8px;
@@ -485,7 +505,7 @@
                     <div class="section-number">PARTIE 1</div>
                     <h2 class="section-title">Découverte & Histoire de l'IA</h2>
                     <div class="section-meta">
-                        <span><i class="fas fa-magic"></i> 3 démonstrations</span>
+                        <span><i class="fas fa-magic"></i> 4 démonstrations</span>
                     </div>
                 </div>
                 <div class="section-toggle">▼</div>
@@ -503,7 +523,7 @@
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo1-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 1</button>
+                <button class="reveal-btn" onclick="revealDemo('demo1-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 1 (Texte simple)</button>
                 
                 <div id="demo1-1" class="demo-box">
                     <h4><i class="fas fa-robot"></i> Démo 1 : Premier contact sans compte</h4>
@@ -529,7 +549,7 @@
 
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo1-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 2</button>
+                <button class="reveal-btn" onclick="revealDemo('demo1-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 2 (Prompt structuré)</button>
                 
                 <div id="demo1-2" class="demo-box">
                     <h4><i class="fas fa-magic"></i> Démo 2 : Prompt amélioré avec structure</h4>
@@ -558,7 +578,7 @@ Format tableau avec colonnes claires.</div>
 
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo1-3', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 3</button>
+                <button class="reveal-btn" onclick="revealDemo('demo1-3', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 3 (Visualisation)</button>
                 
                 <div id="demo1-3" class="demo-box">
                     <h4><i class="fas fa-map-marked-alt"></i> Démo 3 : Visualisation automatisée</h4>
@@ -580,6 +600,34 @@ Format tableau avec colonnes claires.</div>
                     <p>Transformer le texte en carte mentale visuelle.</p>
 
                 </div>
+                
+                <!-- NOUVELLE DÉMO : GÉNÉRATION D'IMAGE -->
+                <button class="reveal-btn" onclick="revealDemo('demo1-4', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 4 (Création d'images)</button>
+
+                <div id="demo1-4" class="demo-box">
+                    <h4><i class="fas fa-image"></i> Démo 4 : Création d'images IA (Gratuit vs. Avancé)</h4>
+                    
+                    <p>Comparer la qualité et la rapidité entre un outil gratuit et un modèle avancé.</p>
+
+                    <div class="tool-links">
+                        <a href="https://www.craiyon.com/" target="_blank" class="tool-btn">
+                            <i class="fas fa-paint-brush"></i> Craiyon
+                            <span class="badge badge-free">Gratuit (Sans compte)</span>
+                        </a>
+                        <a href="https://bard.google.com/images" target="_blank" class="tool-btn">
+                            <i class="fas fa-gem"></i> Gemini
+                            <span class="badge badge-freemium">Compte Google</span>
+                        </a>
+                    </div>
+                    
+                    <button class="prompt-toggle" onclick="togglePrompt('prompt-image')"><i class="fas fa-comment-alt"></i> Afficher le prompt</button>
+                    
+                    <div id="prompt-image" class="prompt-box">
+                        <button class="copy-btn" onclick="copyText('prompt-image-text')"><i class="fas fa-copy"></i> Copier</button>
+                        <div id="prompt-image-text">Un professeur d'histoire médiévale, en pleine réflexion, assis dans une bibliothèque futuriste éclairée par des néons. Style : peinture à l'huile cyberpunk.</div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -695,10 +743,10 @@ Ton : Accessible et engageant</div>
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo2-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 4</button>
+                <button class="reveal-btn" onclick="revealDemo('demo2-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 5 (LLM)</button>
                 
                 <div id="demo2-1" class="demo-box">
-                    <h4><i class="fas fa-network-wired"></i> Démo 4 : Comment fonctionne un LLM ?</h4>
+                    <h4><i class="fas fa-network-wired"></i> Démo 5 : Comment fonctionne un LLM ?</h4>
                     
                     <div class="tool-links">
                         <a href="https://fr.vittascience.com/intelligence-artificielle/" target="_blank" class="tool-btn">
@@ -724,10 +772,10 @@ Ton : Accessible et engageant</div>
                     </div>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo2-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 5 (Biais)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo2-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 6 (Biais)</button>
                 
                 <div id="demo2-2" class="demo-box">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Démo 5 : Les biais en action</h4>
+                    <h4><i class="fas fa-exclamation-triangle"></i> Démo 6 : Les biais en action</h4>
                     
                     <div class="tool-links">
                         <a href="https://perchance.org/ai-text-to-image-generator" target="_blank" class="tool-btn">
@@ -753,10 +801,10 @@ Ton : Accessible et engageant</div>
                     </p>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo2-3', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 6 (Hallucinations)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo2-3', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 7 (Hallucinations)</button>
                 
                 <div id="demo2-3" class="demo-box">
-                    <h4><i class="fas fa-skull-crossbones"></i> Démo 6 : Les hallucinations</h4>
+                    <h4><i class="fas fa-skull-crossbones"></i> Démo 7 : Les hallucinations</h4>
                     
                     <button class="prompt-toggle" onclick="togglePrompt('prompt-hallucination')"><i class="fas fa-comment-alt"></i> Prompt piège</button>
                     
@@ -807,10 +855,10 @@ Ton : Accessible et engageant</div>
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo3-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 7</button>
+                <button class="reveal-btn" onclick="revealDemo('demo3-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 8 (Sécurité)</button>
                 
                 <div id="demo3-1" class="demo-box">
-                    <h4><i class="fas fa-user-shield"></i> Démo 7 : Créer un compte générique</h4>
+                    <h4><i class="fas fa-user-shield"></i> Démo 8 : Créer un compte générique</h4>
                     
                     <div class="info-learning info-box">
                         <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">✅ Checklist de sécurité</h4>
@@ -828,10 +876,10 @@ Ton : Accessible et engageant</div>
                     </div>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo3-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 8</button>
+                <button class="reveal-btn" onclick="revealDemo('demo3-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 9 (Impact)</button>
                 
                 <div id="demo3-2" class="demo-box">
-                    <h4><i class="fas fa-globe-americas"></i> Démo 8 : Impact environnemental</h4>
+                    <h4><i class="fas fa-globe-americas"></i> Démo 9 : Impact environnemental</h4>
                     
                     <div class="tool-links">
                         <a href="https://compareia.culture.gouv.fr/" target="_blank" class="tool-btn">
@@ -892,10 +940,10 @@ Ton : Accessible et engageant</div>
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo4-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 9</button>
+                <button class="reveal-btn" onclick="revealDemo('demo4-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 10 (Corpus)</button>
                 
                 <div id="demo4-1" class="demo-box">
-                    <h4><i class="fas fa-file-alt"></i> Démo 9 : Analyser un corpus (RAG)</h4>
+                    <h4><i class="fas fa-file-alt"></i> Démo 10 : Analyser un corpus (RAG)</h4>
                     
                     <div class="tool-links">
                         <a href="https://chat.openai.com" target="_blank" class="tool-btn"><i class="fas fa-brain"></i> ChatGPT (Plus)</a>
@@ -923,10 +971,10 @@ Format : Tableau</div>
                     </div>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo4-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démos 10-13 : Workflow complet</button>
+                <button class="reveal-btn" onclick="revealDemo('demo4-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démos 11-14 : Workflow complet</button>
                 
                 <div id="demo4-2" class="demo-box">
-                    <h4><i class="fas fa-bezier-curve"></i> Démos 10-13 : Créer une séquence complète</h4>
+                    <h4><i class="fas fa-bezier-curve"></i> Démos 11-14 : Créer une séquence complète</h4>
                     
                     <h5 style="color: var(--amiral-teal); margin: 25px 0 15px 0; font-weight: 700;"><i class="fas fa-search"></i> 1️⃣ Perplexity : Recherche documentaire</h5>
                     <div class="tool-links">
@@ -1013,10 +1061,10 @@ Format : Tableau</div>
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo5-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 14</button>
+                <button class="reveal-btn" onclick="revealDemo('demo5-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 15 (Détection)</button>
                 
                 <div id="demo5-1" class="demo-box">
-                    <h4><i class="fas fa-eye"></i> Démo 14 : Repérer un texte IA</h4>
+                    <h4><i class="fas fa-eye"></i> Démo 15 : Repérer un texte IA</h4>
                     
                     <div class="info-learning info-box">
                         <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">🔍 Marqueurs possibles (PAS des preuves !)</h4>

@@ -54,161 +54,361 @@
             color: var(--amiral-teal);
         }
 
-        /* --- STRUCTURE & HEADER --- */
+        /* --- STRUCTURE & HEADER PREMIUM --- */
         .hero {
-            background: linear-gradient(135deg, var(--amiral-blue-dark) 0%, var(--amiral-teal) 100%);
+            background: linear-gradient(135deg, #0a1929 0%, #0f2847 25%, #1a4d7a 60%, #0077B6 100%);
             color: white;
             padding: 60px 20px 70px 20px;
             text-align: center;
-            border-bottom: 6px solid var(--amiral-accent-blue);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Effet de grille technologique subtile */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(0deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                radial-gradient(circle at 15% 25%, rgba(90, 162, 224, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(0, 119, 182, 0.06) 0%, transparent 50%);
+            background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { background-position: 0 0, 0 0, 0% 0%, 100% 100%; }
+            100% { background-position: 40px 40px, 40px 40px, 100% 100%, 0% 0%; }
+        }
+        
+        /* Barre accent premium en haut avec lueur */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, 
+                var(--amiral-accent-blue) 0%, 
+                #38EF7D 50%, 
+                var(--amiral-teal) 100%);
+            box-shadow: 0 2px 15px rgba(90, 162, 224, 0.4);
+            animation: accentGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes accentGlow {
+            0%, 100% { opacity: 1; box-shadow: 0 2px 15px rgba(90, 162, 224, 0.4); }
+            50% { opacity: 0.85; box-shadow: 0 2px 25px rgba(90, 162, 224, 0.6); }
+        }
+        
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Logo circulaire avec effet premium ultra-sophistiqué */
+        .hero-logo-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 35px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.35),
+                0 0 0 4px rgba(255, 255, 255, 0.15),
+                0 0 0 8px rgba(255, 255, 255, 0.08),
+                0 0 40px rgba(90, 162, 224, 0.2);
+            border: 4px solid white;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: logoEntrance 1s ease-out;
+        }
+        
+        /* Effet de lueur qui pulse autour du logo */
+        .hero-logo-circle::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(90, 162, 224, 0.3) 0%, 
+                transparent 70%);
+            animation: logoPulse 3s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes logoPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        @keyframes logoEntrance {
+            0% {
+                opacity: 0;
+                transform: scale(0.7) translateY(-30px) rotate(-10deg);
+            }
+            60% {
+                transform: scale(1.05) translateY(0) rotate(3deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0);
+            }
+        }
+        
+        .hero-logo-circle:hover {
+            transform: scale(1.12) rotate(8deg);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.45),
+                0 0 0 4px rgba(255, 255, 255, 0.25),
+                0 0 0 8px rgba(255, 255, 255, 0.12),
+                0 0 60px rgba(90, 162, 224, 0.4);
+        }
+        
+        .hero-logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-logo-circle:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Badge institutionnel ultra-premium */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 0.82em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: fadeInUp 0.9s ease-out 0.2s both;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
+        /* Effet de brillance qui traverse le badge */
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                transparent 100%);
+            animation: badgeShine 3s ease-in-out infinite;
         }
         
-        .hero-logo {
-            margin-bottom: 30px;
-            animation: fadeInDown 0.8s ease-out;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .hero-logo img {
-            height: 80px;
-            width: auto;
-            /* filter: brightness(0) invert(1); Temporairement désactivé pour test */
-            opacity: 0.95;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        
-        .hero-logo img:hover {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-        
-        /* Fallback textuel si l'image ne charge pas */
-        .hero-logo-text {
-            display: none;
-            font-size: 2.5em;
-            font-weight: 900;
-            letter-spacing: 3px;
-            padding: 15px 40px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            text-transform: uppercase;
+        @keyframes badgeShine {
+            0% { left: -100%; }
+            50%, 100% { left: 200%; }
         }
         
         .hero h1 {
             font-size: 3.2em;
             font-weight: 900;
             margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-            letter-spacing: -0.5px;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
+            line-height: 1.12;
+            text-shadow: 
+                0 2px 10px rgba(0, 0, 0, 0.3),
+                0 4px 20px rgba(0, 0, 0, 0.2),
+                0 8px 40px rgba(0, 0, 0, 0.1);
+            letter-spacing: -1px;
+            animation: fadeInUp 0.9s ease-out 0.3s both;
+            background: linear-gradient(180deg, #ffffff 0%, #e0f2ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Effet de lueur subtile sous le titre */
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.5) 50%, 
+                transparent 100%);
+            border-radius: 2px;
+            opacity: 0.6;
         }
         
         .hero-subtitle {
-            font-size: 1.4em;
-            font-weight: 600;
-            opacity: 0.95;
-            margin-bottom: 25px;
-            line-height: 1.5;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 0.8s ease-out 0.4s both;
+            font-size: 1.35em;
+            font-weight: 500;
+            opacity: 0.96;
+            margin-bottom: 35px;
+            line-height: 1.65;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.9s ease-out 0.4s both;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.3px;
         }
         
         .hero-tagline {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             font-size: 1.05em;
-            font-weight: 500;
-            opacity: 0.9;
-            margin: 20px auto;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.15);
+            font-weight: 600;
+            opacity: 0.94;
+            margin: 28px auto 35px auto;
+            padding: 15px 32px;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.18) 0%, 
+                rgba(255, 255, 255, 0.10) 50%,
+                rgba(255, 255, 255, 0.12) 100%);
             border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.8s ease-out 0.6s both;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.28);
+            box-shadow: 
+                0 10px 25px rgba(0, 0, 0, 0.18),
+                inset 0 1px 2px rgba(255, 255, 255, 0.25),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.9s ease-out 0.5s both;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Effet de brillance animée */
+        .hero-tagline::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                transparent 70%);
+            animation: taglineGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes taglineGlow {
+            0%, 100% { transform: translate(-25%, -25%); opacity: 0.5; }
+            50% { transform: translate(25%, 25%); opacity: 0.8; }
+        }
+        
+        .hero-tagline:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.25),
+                inset 0 1px 2px rgba(255, 255, 255, 0.3),
+                inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
             max-width: 90%;
         }
         
         .tagline-icon {
-            font-size: 1.4em;
-            animation: pulse 2s ease-in-out infinite;
+            font-size: 1.3em;
         }
         
         .hero-footer {
-            margin-top: 30px;
-            font-size: 0.95em;
+            margin-top: 35px;
+            font-size: 0.9em;
             font-weight: 500;
-            opacity: 0.85;
+            opacity: 0.8;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.8s both;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
         }
         
-        .hero-institution {
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        .hero-footer span {
+            transition: opacity 0.2s ease;
+        }
+        
+        .hero-footer span:hover {
+            opacity: 1;
         }
         
         .hero-separator {
-            font-size: 0.8em;
-            opacity: 0.6;
+            opacity: 0.5;
         }
         
-        .hero-year {
-            font-weight: 600;
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 0.95;
-                transform: translateY(0);
-            }
-        }
-        
+        /* Animation d'entrée premium avec effet élastique */
         @keyframes fadeInUp {
-            from {
+            0% {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px) scale(0.95);
+                filter: blur(4px);
             }
-            to {
+            60% {
+                transform: translateY(-5px) scale(1.01);
+            }
+            100% {
                 opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
+                transform: translateY(0) scale(1);
+                filter: blur(0);
             }
         }
         
         .hero p {
             font-weight: 500;
+        }
+        
+        /* Anciens styles à conserver pour compatibilité */
+        .hero-logo-img {
+            height: 60px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+        
+        .hero-logo-badge {
+            display: none;
+        }
+        
+        .logo-text {
+            display: none;
+        }
+        
+        .logo-subtitle {
+            display: none;
         }
 
         .container {
@@ -821,8 +1021,10 @@
             .hero {
                 padding: 50px 20px 60px 20px;
             }
-            .hero-logo img {
-                height: 65px;
+            .hero-logo-circle {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
             }
             .hero h1 {
                 font-size: 2.5em;
@@ -853,8 +1055,11 @@
             .hero {
                 padding: 40px 15px 50px 15px;
             }
-            .hero-logo img {
-                height: 50px;
+            .hero-logo-circle {
+                width: 85px;
+                height: 85px;
+                margin-bottom: 18px;
+                border: 3px solid rgba(255, 255, 255, 0.9);
             }
             .hero h1 { 
                 font-size: 1.8em;
@@ -923,11 +1128,11 @@
 
     <div class="hero">
         <div class="hero-content">
-            <div class="hero-logo">
-                <img src="https://www.pedagogie.ac-nice.fr/dane/documents-dane/editeurs/DRANE/Logo_DRANE_Bleu_Klein_détaillé.png" 
-                     alt="Logo DRANE PACA"
-                     onerror="this.onerror=null; this.src='https://www.pedagogie.ac-nice.fr/dane/documents-dane/editeurs/DRANE/Logo_DRANE_Bleu_Klein_detaille.png'; this.onerror=function(){this.style.display='none';}" />
+            <!-- Logo DRANE circulaire -->
+            <div class="hero-logo-circle">
+                <img src="1756922984159.jpg" alt="Logo DRANE PACA" />
             </div>
+            
             <h1>Formation IA Découverte</h1>
             <p class="hero-subtitle">Connaître et savoir utiliser des IA génératives</p>
             <p class="hero-tagline">
@@ -935,9 +1140,9 @@
                 Apprendre en faisant : construire une séquence pédagogique tout en s'acculturant à l'IA
             </p>
             <div class="hero-footer">
-                <span class="hero-institution">DRANE PACA - Académie de Nice</span>
+                <span>DRANE PACA - Académie de Nice</span>
                 <span class="hero-separator">•</span>
-                <span class="hero-year">2025</span>
+                <span>2025</span>
             </div>
         </div>
     </div>

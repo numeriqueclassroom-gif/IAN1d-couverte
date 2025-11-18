@@ -3,25 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formation IA - Style Amiral</title>
+    <title>Formation IA - Style Amiral Pro</title>
     
-    <!-- Police Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Icones Font Awesome (Nécessaire pour le style Amiral) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8D88W6dFCEzE8I/k7j60Y0wXpW2N65eY/q8fFpC35K7Jd2K1O8gX7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8D88W6dFCEzE8I/k7j60Y0wXpW2N65eY/q8fFpC35K7Jd2K1O8gX7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <style>
-        /* --- PALETTE & BASE (Style Amiral) --- */
+        /* --- PALETTE & BASE (Style Amiral PRO) --- */
         :root {
-            --amiral-blue-dark: #0A3D62; /* Bleu foncé principal (Texte, Hero) */
-            --amiral-cyan: #0672A4;      /* Cyan (Accents, liens) */
-            --amiral-teal: #00A69D;      /* Teal (Tuile active, icônes) */
-            --amiral-accent-orange: #F47216; /* ACCENT ORANGE VIF */
-            --amiral-light-bg: #F7F9FA;  /* Fond de page très clair */
-            --amiral-card-bg: #FFFFFF;   /* Fond des tuiles */
-            --amiral-text-dark: #2C3E50; /* Texte général */
-            --amiral-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-            --amiral-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.12);
+            /* Couleurs Principales */
+            --amiral-blue-dark: #1F3A68;
+            --amiral-cyan: #2A6A9E;
+            --amiral-teal: #0077B6;
+            --amiral-accent-blue: #5AA2E0;
+            
+            /* Couleurs Secondaires */
+            --amiral-light-bg: #F7F9FA;
+            --amiral-card-bg: #FFFFFF;
+            --amiral-text-dark: #333333;
+            --amiral-shadow: 0 8px 20px rgba(31, 58, 104, 0.1);
+            --amiral-shadow-hover: 0 12px 25px rgba(31, 58, 104, 0.15);
+            
+            /* Couleurs spécifiques aux badges/infos */
+            --color-warning-light: #FFF8E1;
+            --color-warning-dark: #B97B00;
+            --color-success-light: #E8F5E9;
+            --color-success-dark: #2E7D32;
         }
 
         * {
@@ -49,28 +56,171 @@
 
         /* --- STRUCTURE & HEADER --- */
         .hero {
-            background: linear-gradient(135deg, var(--amiral-blue-dark), var(--amiral-cyan));
+            background: linear-gradient(135deg, var(--amiral-blue-dark) 0%, var(--amiral-teal) 100%);
             color: white;
-            padding: 80px 20px 80px 20px;
+            padding: 60px 20px 70px 20px;
             text-align: center;
-            border-bottom: 5px solid var(--amiral-accent-orange);
+            border-bottom: 6px solid var(--amiral-accent-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-logo {
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-logo img {
+            height: 80px;
+            width: auto;
+            /* filter: brightness(0) invert(1); Temporairement désactivé pour test */
+            opacity: 0.95;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .hero-logo img:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        
+        /* Fallback textuel si l'image ne charge pas */
+        .hero-logo-text {
+            display: none;
+            font-size: 2.5em;
+            font-weight: 900;
+            letter-spacing: 3px;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            text-transform: uppercase;
         }
         
         .hero h1 {
-            font-size: 2.8em;
-            font-weight: 800;
-            margin-bottom: 15px;
+            font-size: 3.2em;
+            font-weight: 900;
+            margin-bottom: 20px;
             line-height: 1.2;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.5px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4em;
+            font-weight: 600;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        .hero-tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05em;
+            font-weight: 500;
+            opacity: 0.9;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+            max-width: 90%;
+        }
+        
+        .tagline-icon {
+            font-size: 1.4em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .hero-footer {
+            margin-top: 30px;
+            font-size: 0.95em;
+            font-weight: 500;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
+        }
+        
+        .hero-institution {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-separator {
+            font-size: 0.8em;
+            opacity: 0.6;
+        }
+        
+        .hero-year {
+            font-weight: 600;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 0.95;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .hero p {
+            font-weight: 500;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto 50px;
             padding: 0 20px;
         }
         
         .section-card:first-child {
-            margin-top: -30px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
         }
 
         /* --- PROGRESS BAR --- */
@@ -82,7 +232,7 @@
         }
         .progress-bar {
             height: 100%;
-            background: var(--amiral-accent-orange);
+            background: var(--amiral-accent-blue);
             width: 0%;
             transition: width 0.3s ease;
         }
@@ -90,88 +240,216 @@
         /* --- TUILES (SECTION CARD) --- */
         .section-card {
             background: var(--amiral-card-bg);
-            border-radius: 15px;
+            border-radius: 18px;
             margin-bottom: 30px;
             box-shadow: var(--amiral-shadow);
             overflow: hidden;
-            transition: box-shadow 0.3s ease;
-            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border: 1px solid #e9ecef;
         }
         .section-card:hover {
             box-shadow: var(--amiral-shadow-hover);
+            transform: translateY(-2px);
         }
-
-        /* En-tête de Tuile */
+        
         .section-header {
-            /* Utilisation de grid pour un alignement parfait de l'icône et du texte */
             display: grid;
-            grid-template-columns: auto 1fr auto; /* Icône | Contenu | Flèche */
-            align-items: center; /* Alignement vertical central */
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
             padding: 25px 35px;
             cursor: pointer;
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
         }
         .section-header:hover {
-            background: #e9f5f5;
+            background: #e6f7ff;
         }
         
-        /* État "Ouvert" */
         .section-card.expanded .section-header {
             background: var(--amiral-teal);
             color: white;
-            border-bottom-color: var(--amiral-accent-orange);
+            border-bottom-color: var(--amiral-accent-blue);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .section-card.expanded .section-header:hover {
             background: var(--amiral-teal);
         }
 
-        /* Icônes de Tuile */
         .section-header i.amiral-icon {
-            font-size: 2.5em; 
+            font-size: 2.2em;
             margin-right: 25px; 
-            color: var(--amiral-teal);
-            transition: color 0.3s ease;
+            color: white;
+            transition: all 0.3s ease;
+            /* Fond circulaire avec dégradé - RÉDUIT */
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: visible;
         }
+        
+        /* Motif décoratif - petit cercle en haut à droite */
+        .section-header i.amiral-icon::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            top: 8px;
+            right: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Motif décoratif - petit cercle en bas à gauche */
+        .section-header i.amiral-icon::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            bottom: 10px;
+            left: 10px;
+        }
+        
+        /* Couleurs spécifiques pour chaque section */
+        #intro .section-header i.amiral-icon {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+        }
+        #partie1 .section-header i.amiral-icon {
+            background: linear-gradient(135deg, #4E54C8 0%, #8F94FB 100%);
+        }
+        #prompt .section-header i.amiral-icon {
+            background: linear-gradient(135deg, #11998E 0%, #38EF7D 100%);
+        }
+        #partie2 .section-header i.amiral-icon {
+            background: linear-gradient(135deg, #F2994A 0%, #F2C94C 100%);
+        }
+        #partie3 .section-header i.amiral-icon {
+            background: linear-gradient(135deg, #6A11CB 0%, #2575FC 100%);
+        }
+        #partie4 .section-header i.amiral-icon {
+            background: linear-gradient(135deg, #E44D26 0%, #F16529 100%);
+        }
+        #partie5 .section-header i.amiral-icon {
+            background: linear-gradient(135deg, #00B4DB 0%, #0083B0 100%);
+        }
+        #partie6 .section-header i.amiral-icon {
+            background: linear-gradient(135deg, #134E5E 0%, #71B280 100%);
+        }
+        
         .section-card.expanded .section-header i.amiral-icon {
-            color: var(--amiral-accent-orange);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-card.expanded .section-header i.amiral-icon::before {
+            background: rgba(255, 255, 255, 0.5);
         }
 
-        /* Contenu du titre (au centre de la grille) */
-        .section-header-content {
-            /* Aucune modification nécessaire ici grâce au grid */
-        }
-
-
-        /* Numéro de Section */
         .section-number {
-            font-size: 0.8em;
+            font-size: 0.85em;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             color: var(--amiral-cyan);
+            margin-bottom: 5px;
         }
         .section-card.expanded .section-number {
-            color: var(--amiral-accent-orange);
+            color: var(--amiral-light-bg);
+            opacity: 0.8;
         }
 
-        /* Titre de Section */
         .section-title {
-            font-size: 1.8em;
-            font-weight: 700;
-            margin-bottom: 5px;
+            font-size: 1.9em;
+            font-weight: 800;
+            line-height: 1.2;
         }
         
         .section-meta {
             font-size: 0.9em;
-            opacity: 0.8;
+            opacity: 0.9;
             color: var(--amiral-text-dark);
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
+        
+        .section-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85em;
+            transition: all 0.2s ease;
+        }
+        
+        /* Couleurs des badges de métadonnées selon la section */
+        #intro .section-meta span {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.15) 0%, rgba(255, 142, 83, 0.15) 100%);
+            color: #D63031;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        #partie1 .section-meta span {
+            background: linear-gradient(135deg, rgba(78, 84, 200, 0.15) 0%, rgba(143, 148, 251, 0.15) 100%);
+            color: #4E54C8;
+            border: 1px solid rgba(78, 84, 200, 0.3);
+        }
+        #prompt .section-meta span {
+            background: linear-gradient(135deg, rgba(17, 153, 142, 0.15) 0%, rgba(56, 239, 125, 0.15) 100%);
+            color: #11998E;
+            border: 1px solid rgba(17, 153, 142, 0.3);
+        }
+        #partie2 .section-meta span {
+            background: linear-gradient(135deg, rgba(242, 153, 74, 0.15) 0%, rgba(242, 201, 76, 0.15) 100%);
+            color: #E67E22;
+            border: 1px solid rgba(242, 153, 74, 0.3);
+        }
+        #partie3 .section-meta span {
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.15) 0%, rgba(37, 117, 252, 0.15) 100%);
+            color: #6A11CB;
+            border: 1px solid rgba(106, 17, 203, 0.3);
+        }
+        #partie4 .section-meta span {
+            background: linear-gradient(135deg, rgba(228, 77, 38, 0.15) 0%, rgba(241, 101, 41, 0.15) 100%);
+            color: #E44D26;
+            border: 1px solid rgba(228, 77, 38, 0.3);
+        }
+        #partie5 .section-meta span {
+            background: linear-gradient(135deg, rgba(0, 180, 219, 0.15) 0%, rgba(0, 131, 176, 0.15) 100%);
+            color: #0083B0;
+            border: 1px solid rgba(0, 180, 219, 0.3);
+        }
+        #partie6 .section-meta span {
+            background: linear-gradient(135deg, rgba(19, 78, 94, 0.15) 0%, rgba(113, 178, 128, 0.15) 100%);
+            color: #134E5E;
+            border: 1px solid rgba(19, 78, 94, 0.3);
+        }
+        
         .section-card.expanded .section-meta {
             color: white;
-            opacity: 0.9;
+            opacity: 1;
+        }
+        
+        .section-card.expanded .section-meta span {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .section-meta span i {
+            font-size: 1em;
         }
 
-        /* Toggle Arrow */
         .section-toggle {
             font-size: 1.5em;
             color: var(--amiral-teal);
@@ -180,29 +458,29 @@
         }
         .section-card.expanded .section-toggle {
             transform: rotate(180deg);
-            color: var(--amiral-accent-orange);
+            color: var(--amiral-accent-blue);
         }
 
-        /* Contenu de la Tuile */
         .section-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s ease-out;
+            transition: max-height 0.6s ease-out;
             padding: 0 35px;
+            border-top: 1px solid #f0f0f0;
         }
         .section-card.expanded .section-content {
             max-height: 15000px; 
             padding: 30px 35px;
         }
 
-        /* --- BLOCS D'INFORMATION (CADRE & INFO BOX) --- */
+        /* --- BLOCS D'INFORMATION --- */
         .cadre {
             background: #EAF8F8;
             color: var(--amiral-blue-dark);
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 25px;
-            border-left: 6px solid var(--amiral-teal);
+            border-left: 8px solid var(--amiral-teal);
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
         }
 
@@ -210,54 +488,68 @@
             font-size: 1.4em;
             margin-bottom: 15px;
             color: var(--amiral-teal);
+            font-weight: 700;
+            border-bottom: 1px dashed rgba(0, 119, 182, 0.3);
+            padding-bottom: 8px;
         }
         
         .cadre ul { list-style: none; padding-left: 0; }
         .cadre li {
-            padding-left: 25px;
+            padding-left: 30px;
             position: relative;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .cadre li::before {
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
-            content: "\f0c1";
+            content: "\f058";
             position: absolute;
             left: 0;
-            color: var(--amiral-cyan);
+            color: var(--amiral-teal);
             top: 2px;
+            font-size: 1.1em;
         }
 
         .ref-badge {
             background: var(--amiral-cyan);
             color: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
             cursor: pointer;
-            margin-left: 5px;
+            margin-left: 10px;
             font-weight: 600;
+            text-transform: uppercase;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: background 0.2s;
         }
-        .ref-badge:hover { background: var(--amiral-blue-dark); }
+        .ref-badge:hover { 
+            background: var(--amiral-blue-dark); 
+        }
 
-
+        /* INFO BOXES */
         .info-box {
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             margin: 20px 0;
-            border-left: 5px solid;
+            border-left: 6px solid;
             font-size: 0.95em;
+            line-height: 1.5;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
+        
         .info-formateur { 
-            background: #FFFBF0; 
-            border-color: var(--amiral-accent-orange);
-            color: #92400E; 
+            background: #F0F8FF;
+            border-color: var(--amiral-accent-blue);
+            color: var(--amiral-blue-dark);
         }
+        
         .info-learning { 
-            background: #F0F4FF; 
-            border-color: var(--amiral-cyan); 
+            background: #F0F8FF; 
+            border-color: var(--amiral-teal); 
             color: var(--amiral-blue-dark); 
         }
+        
         .info-warning { 
             background: #FFF0F0; 
             border-color: #E53E3E; 
@@ -266,79 +558,113 @@
 
         .learning-list { list-style: none; padding-left: 0; }
         .learning-list li {
-             padding: 8px 0 8px 25px;
-             border-bottom: 1px dashed rgba(10, 61, 98, 0.1);
-             position: relative;
+            padding: 8px 0 8px 30px;
+            border-bottom: 1px dashed rgba(0, 119, 182, 0.2);
+            position: relative;
+            font-weight: 500;
         }
         .learning-list li span {
             position: absolute;
             left: 0;
             top: 8px;
-            color: var(--amiral-cyan);
+            color: var(--amiral-teal);
+            font-size: 1.1em;
+            font-weight: 800;
         }
         .learning-list li:last-child { border-bottom: none; }
 
-
         /* --- BOUTONS ET PROMPTS --- */
         .reveal-btn {
-            background: var(--amiral-accent-orange);
+            background: var(--amiral-accent-blue);
             color: white;
-            padding: 14px 28px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-weight: 700;
-            font-size: 1em;
+            font-size: 1.05em;
             cursor: pointer;
-            box-shadow: 0 4px 0px #CC5E12;
-            margin: 20px 0;
+            box-shadow: 0 4px 0px #4A8DCF;
+            margin: 25px 0;
             display: flex; 
             align-items: center;
             justify-content: center;
             width: 100%;
             transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .reveal-btn i { margin-right: 10px; font-size: 1.1em; }
+        .reveal-btn i { margin-right: 12px; font-size: 1.2em; }
 
-        .reveal-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 0px #CC5E12; }
-        .reveal-btn:active { transform: translateY(3px); box-shadow: 0 1px 0px #CC5E12; }
+        .reveal-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 0px #4A8DCF;
+        }
+        .reveal-btn:active { 
+            transform: translateY(2px); 
+            box-shadow: 0 2px 0px #4A8DCF;
+        }
 
         .reveal-btn.used {
-            background: var(--amiral-blue-dark);
+            background: var(--amiral-teal);
             color: white;
-            box-shadow: 0 4px 0px #083451;
+            box-shadow: 0 4px 0px #005696;
             cursor: default;
+            font-weight: 800;
         }
-        .reveal-btn.used:hover { transform: none; box-shadow: 0 4px 0px #083451; }
-        .reveal-btn.used:active { transform: translateY(3px); box-shadow: 0 1px 0px #083451; }
+        .reveal-btn.used:hover { 
+            transform: none; 
+            box-shadow: 0 4px 0px #005696; 
+        }
+        .reveal-btn.used:active { 
+            transform: translateY(2px); 
+            box-shadow: 0 2px 0px #005696; 
+        }
+        .reveal-btn.used i.fa-check {
+            color: var(--amiral-accent-blue);
+        }
 
         /* Demo Box */
         .demo-box {
             display: none;
-            background: #f7f9fa;
-            border: 1px solid #D5E1E9;
-            border-radius: 10px;
+            background: #fcfcfc;
+            border: 2px solid #D5E1E9;
+            border-radius: 12px;
             padding: 30px;
             margin: 25px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
             animation: fadeIn 0.4s ease;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .demo-box.active { display: block; }
         .demo-box h4 {
-            color: var(--amiral-teal);
-            border-bottom: 2px solid var(--amiral-accent-orange);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            color: var(--amiral-blue-dark);
+            border-bottom: 3px solid var(--amiral-teal);
+            padding-bottom: 12px;
+            margin-bottom: 25px;
             display: flex; align-items: center;
+            font-weight: 800;
+            font-size: 1.5em;
         }
-        .demo-box h4 i { margin-right: 10px; font-size: 1.2em; }
+        .demo-box h4 i { 
+            margin-right: 15px; 
+            font-size: 1.3em;
+            color: var(--amiral-teal); 
+        }
+        
+        .demo-box h5 {
+            color: var(--amiral-teal);
+            margin: 25px 0 15px 0;
+            font-weight: 800;
+        }
+        .demo-box h5 i {
+            margin-right: 10px;
+        }
 
-        /* Prompt Toggle - Rendu visible pour le clic */
+        /* Prompt Toggle */
         .prompt-toggle {
             background: var(--amiral-cyan);
             color: white;
             padding: 12px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
@@ -347,34 +673,37 @@
             border: none;
             margin: 15px 0;
             transition: background 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         .prompt-toggle:hover { background: var(--amiral-teal); }
+        .prompt-toggle i { font-size: 1em; }
 
-        /* Prompt Box (Boîte de Code/Texte) */
+        /* Prompt Box */
         .prompt-box {
-            display: none; /* TRÈS IMPORTANT : CACHÉ PAR DÉFAUT */
-            background: #2D3748;
-            color: #EDF2F7;
-            padding: 25px;
-            border-radius: 8px;
+            display: none;
+            background: #212529;
+            color: #E9ECEF;
+            padding: 30px;
+            border-radius: 10px;
             margin: 20px 0;
             position: relative;
-            font-family: 'Monaco', monospace;
-            line-height: 1.6;
-            font-size: 0.95em;
+            font-family: 'Consolas', 'Monaco', monospace;
+            line-height: 1.7;
+            font-size: 0.9em;
             white-space: pre-wrap;
             word-break: break-word;
+            border: 1px solid #000;
         }
-        .prompt-box.show { display: block; } /* AFFICHÉ AU CLIC */
+        .prompt-box.show { display: block; }
 
         .copy-btn {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--amiral-accent-orange);
+            top: 15px;
+            right: 15px;
+            background: var(--amiral-accent-blue);
             color: white;
             padding: 8px 14px;
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: 600;
             font-size: 0.85em;
             cursor: pointer;
@@ -382,96 +711,206 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            transition: background 0.2s;
         }
+        .copy-btn:hover { background: #4A8DCF; }
 
         /* Tool Links */
         .tool-links {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
-            margin: 15px 0 25px 0;
-        }
-        /* Style bulle appliqué aux boutons outils */
-        .tool-btn {
-            padding: 10px 18px;
-            background: var(--amiral-cyan);
-            color: white;
+            margin: 20px 0 30px 0;
+            padding: 10px;
+            background: #f0f4f7;
             border-radius: 8px;
+        }
+        
+        .tool-btn {
+            padding: 12px 20px;
+            background: var(--amiral-blue-dark);
+            color: white;
+            border-radius: 10px;
             font-weight: 600;
-            font-size: 0.95em;
+            font-size: 0.9em;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombre de bulle légère */
+            gap: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
             transition: all 0.2s;
         }
 
         .tool-btn:hover { 
-            background: var(--amiral-teal); 
-            transform: translateY(-1px); 
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Effet de profondeur au survol */
+            background: var(--amiral-teal);
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2); 
         }
+        .tool-btn i { font-size: 1.1em; }
 
+        /* Badges */
         .badge {
-            font-size: 0.75em;
+            font-size: 0.7em;
             padding: 3px 8px;
-            border-radius: 5px;
+            border-radius: 4px;
             margin-left: 5px;
             font-weight: 700;
             text-transform: uppercase;
+            color: white;
+            line-height: 1;
+        }
+        .badge-free, .badge-french {
+            background: var(--amiral-teal);
+        }
+        .badge-freemium {
+            background: var(--amiral-accent-blue);
         }
         
         .highlight { 
-            background: var(--amiral-accent-orange);
+            background: var(--amiral-accent-blue);
             color: white;
-            padding: 2px 6px; 
-            border-radius: 4px; 
-            font-weight: 700; 
+            padding: 3px 8px; 
+            border-radius: 6px; 
+            font-weight: 800; 
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
-        .font-bold { font-weight: 800; color: var(--amiral-teal); }
+        .font-bold { font-weight: 900; color: var(--amiral-teal); }
         
-        /* --- MODAL (Référence MEN) --- */
+        .info-learning ol li strong {
+            color: var(--amiral-teal);
+        }
+        
+        .info-warning strong { color: #D32F2F !important; }
+        .info-formateur strong { color: var(--amiral-accent-blue) !important; }
+        .info-learning strong { color: var(--amiral-teal) !important; }
+
+        /* --- MODAL --- */
         .modal {
             display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6); backdrop-filter: blur(3px);
+            background-color: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            transition: opacity 0.3s ease;
         }
-        .modal.show { display: block; }
+        .modal.show { display: block; opacity: 1; }
         .modal-content {
-            background-color: var(--amiral-card-bg); margin: 10% auto; padding: 30px;
-            border-radius: 12px; width: 90%; max-width: 550px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.35); animation: slideIn 0.3s ease-out;
+            background-color: var(--amiral-card-bg); margin: 8% auto; padding: 30px;
+            border-radius: 15px; width: 90%; max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: slideIn 0.4s ease-out;
+            border-top: 5px solid var(--amiral-accent-blue);
         }
-        .modal-header { border-bottom: 2px solid var(--amiral-teal); padding-bottom: 12px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-        #modal-title { color: var(--amiral-teal); font-size: 1.6em; font-weight: 700; }
-        .modal-close { color: #aaa; font-size: 32px; font-weight: bold; border: none; background: none; cursor: pointer; }
-        .modal-close:hover { color: var(--amiral-blue-dark); }
-        @keyframes slideIn { from { transform: translateY(-80px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
+        .modal-header { border-bottom: 2px solid var(--amiral-teal); padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        #modal-title { color: var(--amiral-teal); font-size: 1.8em; font-weight: 800; }
+        .modal-close { 
+            color: var(--amiral-blue-dark); font-size: 38px; font-weight: bold; border: none; background: none; cursor: pointer; 
+            transition: color 0.2s;
+        }
+        .modal-close:hover { color: #E53E3E; }
+        .modal-content blockquote {
+            font-style: italic;
+            border-left: 5px solid var(--amiral-accent-blue);
+            padding-left: 15px;
+            margin: 20px 0;
+            color: var(--amiral-text-dark);
+            background: #F0F8FF;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        @keyframes slideIn { from { transform: translateY(-100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2em; }
-            .section-title { font-size: 1.5em; }
+        @media (max-width: 900px) {
+            .hero {
+                padding: 50px 20px 60px 20px;
+            }
+            .hero-logo img {
+                height: 65px;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+            .hero-tagline {
+                font-size: 0.95em;
+                padding: 12px 25px;
+            }
+            .container { padding: 0 15px; }
+            .section-header { padding: 20px 25px; }
+            .section-header i.amiral-icon { 
+                margin-right: 15px; 
+                width: 58px;
+                height: 58px;
+                font-size: 2em;
+            }
+            .section-title { font-size: 1.7em; }
+            .reveal-btn { padding: 12px 20px; font-size: 1em; }
+            .demo-box { padding: 20px; }
+            .demo-box h4 { font-size: 1.3em; }
+            .tool-links { flex-direction: column; gap: 10px; }
+            .tool-btn { width: 100%; justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .hero {
+                padding: 40px 15px 50px 15px;
+            }
+            .hero-logo img {
+                height: 50px;
+            }
+            .hero h1 { 
+                font-size: 1.8em;
+                margin-bottom: 15px;
+            }
+            .hero-subtitle {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            .hero-tagline {
+                font-size: 0.85em;
+                padding: 10px 20px;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .hero-footer {
+                font-size: 0.85em;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .hero-separator {
+                display: none;
+            }
+            .section-card:first-child { margin-top: -30px; }
+            .section-header i.amiral-icon { 
+                width: 48px;
+                height: 48px;
+                font-size: 1.6em;
+                margin-right: 12px;
+            }
+            .section-header i.amiral-icon::before {
+                width: 8px;
+                height: 8px;
+                top: 6px;
+                right: 6px;
+            }
+            .section-header i.amiral-icon::after {
+                width: 6px;
+                height: 6px;
+                bottom: 7px;
+                left: 7px;
+            }
             .section-header { 
-                grid-template-columns: 1fr auto; /* Retirer l'icône de la grille pour le mobile */
-                padding: 20px 25px; 
+                grid-template-columns: auto 1fr auto; 
+                padding: 15px 20px;
+            }
+            .section-title { font-size: 1.4em; }
+            .section-content { padding: 0 20px; }
+            .section-card.expanded .section-content { padding: 20px; }
+            .section-toggle { margin-left: 0; }
+            .prompt-box { padding: 20px; }
+            .copy-btn { top: 8px; right: 8px; padding: 6px 10px; font-size: 0.8em; }
+            .section-meta { 
                 flex-direction: column; 
                 align-items: flex-start; 
-            }
-            .section-header i.amiral-icon { 
-                /* L'icône est retirée du flux principal sur mobile pour simplifier l'alignement */
-                display: none; 
-            }
-            .section-header-content { width: 100%; }
-            .section-meta { margin-top: 10px; }
-            .section-card.expanded .section-content { padding: 20px; }
-            .section-toggle { margin-top: 10px; align-self: flex-end; margin-left: 0; }
-            .reveal-btn { padding: 12px 20px; }
-        }
-        /* Rétablissement de l'icône sur mobile pour le style */
-        @media (min-width: 769px) {
-            .section-header i.amiral-icon {
-                display: block;
+                gap: 8px;
             }
         }
     </style>
@@ -484,9 +923,22 @@
 
     <div class="hero">
         <div class="hero-content">
-            <h1>Formation IA découverte: connaître et savoir utiliser des IA génératives.</h1>
-            <p style="font-size: 1.1em; opacity: 0.95; margin-top: 15px;">Apprendre en faisant : construire une séquence pédagogique tout en s'acculturant à l'IA</p>
-            <p style="font-size: 0.8em; margin-top: 10px; opacity: 0.9;">DRANE PACA - Académie de Nice | 2025</p>
+            <div class="hero-logo">
+                <img src="https://www.pedagogie.ac-nice.fr/dane/documents-dane/editeurs/DRANE/Logo_DRANE_Bleu_Klein_détaillé.png" 
+                     alt="Logo DRANE PACA"
+                     onerror="this.onerror=null; this.src='https://www.pedagogie.ac-nice.fr/dane/documents-dane/editeurs/DRANE/Logo_DRANE_Bleu_Klein_detaille.png'; this.onerror=function(){this.style.display='none';}" />
+            </div>
+            <h1>Formation IA Découverte</h1>
+            <p class="hero-subtitle">Connaître et savoir utiliser des IA génératives</p>
+            <p class="hero-tagline">
+                <span class="tagline-icon">🎓</span>
+                Apprendre en faisant : construire une séquence pédagogique tout en s'acculturant à l'IA
+            </p>
+            <div class="hero-footer">
+                <span class="hero-institution">DRANE PACA - Académie de Nice</span>
+                <span class="hero-separator">•</span>
+                <span class="hero-year">2025</span>
+            </div>
         </div>
     </div>
 
@@ -494,7 +946,7 @@
 
         <div class="section-card" id="intro">
             <div class="section-header" onclick="toggleSection(this)">
-                <i class="amiral-icon fas fa-chalkboard-teacher"></i> 
+                <i class="amiral-icon fas fa-bullseye"></i> 
                 <div class="section-header-content">
                     <div class="section-number">INTRODUCTION</div>
                     <h2 class="section-title">Objectif de la formation</h2>
@@ -521,7 +973,7 @@
 
         <div class="section-card" id="partie1">
             <div class="section-header" onclick="toggleSection(this)">
-                <i class="amiral-icon fas fa-history"></i>
+                <i class="amiral-icon fas fa-history"></i> 
                 <div class="section-header-content">
                     <div class="section-number">PARTIE 1</div>
                     <h2 class="section-title">Découverte & Histoire de l'IA</h2>
@@ -544,10 +996,10 @@
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo1-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 1 (Texte simple)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo1-1', this)"><i class="fas fa-robot"></i> Démo 1 : Premier contact sans compte</button>
                 
                 <div id="demo1-1" class="demo-box">
-                    <h4><i class="fas fa-robot"></i> Démo 1 : Premier contact sans compte</h4>
+                    <h4><i class="fas fa-comment-dots"></i> Démo 1 : Premier contact sans compte</h4>
                     
                     <div class="tool-links">
                         <a href="https://duckduckgo.com/?q=DuckDuckGo&ia=chat" target="_blank" class="tool-btn">
@@ -566,11 +1018,9 @@
                         <button class="copy-btn" onclick="copyText('prompt1-text')"><i class="fas fa-copy"></i> Copier</button>
                         <div id="prompt1-text">Explique en 150 mots maximum l'histoire de l'intelligence artificielle, de ses origines à aujourd'hui, pour des enseignants du secondaire.</div>
                     </div>
-
-
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo1-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 2 (Prompt structuré)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo1-2', this)"><i class="fas fa-laptop-code"></i> Démo 2 : Prompt structuré</button>
                 
                 <div id="demo1-2" class="demo-box">
                     <h4><i class="fas fa-magic"></i> Démo 2 : Prompt amélioré avec structure</h4>
@@ -596,13 +1046,12 @@ Pour chaque date : Date | Événement | Impact
 
 Format tableau avec colonnes claires.</div>
                     </div>
-
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo1-3', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 3 (Visualisation)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo1-3', this)"><i class="fas fa-sitemap"></i> Démo 3 : Visualisation</button>
                 
                 <div id="demo1-3" class="demo-box">
-                    <h4><i class="fas fa-map-marked-alt"></i> Démo 3 : Visualisation automatisée</h4>
+                    <h4><i class="fas fa-project-diagram"></i> Démo 3 : Visualisation automatisée</h4>
                     
                     <div class="tool-links">
                         <a href="https://mymarkmap.vercel.app/" target="_blank" class="tool-btn">
@@ -619,11 +1068,9 @@ Format tableau avec colonnes claires.</div>
                     </div>
                     
                     <p>Transformer le texte en carte mentale visuelle.</p>
-
                 </div>
                 
-                <!-- DÉMO 4 : GÉNÉRATION D'IMAGE -->
-                <button class="reveal-btn" onclick="revealDemo('demo1-4', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 4 (Création d'images)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo1-4', this)"><i class="fas fa-palette"></i> Démo 4 : Création d'images</button>
 
                 <div id="demo1-4" class="demo-box">
                     <h4><i class="fas fa-image"></i> Démo 4 : Création d'images IA (Gratuit vs. Avancé)</h4>
@@ -635,7 +1082,7 @@ Format tableau avec colonnes claires.</div>
                             <i class="fas fa-paint-brush"></i> Craiyon
                             <span class="badge badge-free">Gratuit (Sans compte)</span>
                         </a>
-                        <a href="https://bard.google.com/images" target="_blank" class="tool-btn">
+                        <a href="https://gemini.google.com/images" target="_blank" class="tool-btn">
                             <i class="fas fa-gem"></i> Gemini
                             <span class="badge badge-freemium">Compte Google</span>
                         </a>
@@ -648,13 +1095,12 @@ Format tableau avec colonnes claires.</div>
                         <div id="prompt-image-text">Un professeur d'histoire médiévale, en pleine réflexion, assis dans une bibliothèque futuriste éclairée par des néons. Style : peinture à l'huile cyberpunk.</div>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <div class="section-card" id="prompt">
             <div class="section-header" onclick="toggleSection(this)">
-                <i class="amiral-icon fas fa-key"></i>
+                <i class="amiral-icon fas fa-edit"></i>
                 <div class="section-header-content">
                     <div class="section-number">FOCUS TECHNIQUE</div>
                     <h2 class="section-title">Maîtriser le Prompt Engineering</h2>
@@ -673,26 +1119,26 @@ Format tableau avec colonnes claires.</div>
                 </div>
 
                 <div class="info-learning info-box">
-                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">🔑 Les 5 principes d'un bon prompt</h4>
+                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-cogs"></i> Les 5 principes d'un bon prompt</h4>
                     <ol style="padding-left: 20px; line-height: 2.2; font-size: 1.05em; margin-top: 15px;">
-                        <li><strong style="color: var(--amiral-blue-dark);">1. RÔLE</strong> : Donner un rôle à l'IA</li>
-                        <li><strong style="color: var(--amiral-blue-dark);">2. CONTEXTE</strong> : Préciser le contexte</li>
-                        <li><strong style="color: var(--amiral-blue-dark);">3. TÂCHE</strong> : Définir clairement la tâche</li>
-                        <li><strong style="color: var(--amiral-blue-dark);">4. FORMAT</strong> : Spécifier le format</li>
-                        <li><strong style="color: var(--amiral-blue-dark);">5. CONTRAINTES</strong> : Ajouter des limites</li>
+                        <li><strong style="color: var(--amiral-teal);">RÔLE</strong> : Donner un rôle à l'IA</li>
+                        <li><strong style="color: var(--amiral-teal);">CONTEXTE</strong> : Préciser le contexte</li>
+                        <li><strong style="color: var(--amiral-teal);">TÂCHE</strong> : Définir clairement la tâche</li>
+                        <li><strong style="color: var(--amiral-teal);">FORMAT</strong> : Spécifier le format</li>
+                        <li><strong style="color: var(--amiral-teal);">CONTRAINTES</strong> : Ajouter des limites</li>
                     </ol>
                     <p style="margin-top: 20px; text-align: center;">
                         <a href="https://novapeda.eu/genprompt" target="_blank" style="color: var(--amiral-cyan); font-weight: 600; text-decoration: underline;">🔗 Outil NovaPeda : Générateur de prompts</a>
                     </p>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('prompt-exemples', this)"><i class="fas fa-chart-bar"></i> Afficher les exemples progressifs</button>
+                <button class="reveal-btn" onclick="revealDemo('prompt-exemples', this)"><i class="fas fa-chart-line"></i> Afficher les exemples progressifs</button>
                 
                 <div id="prompt-exemples" class="demo-box">
                     <h4>📊 Exemples : De faible à excellent</h4>
                     
                     <div class="info-warning info-box">
-                        <strong style="color: #E53E3E;">❌ Prompt FAIBLE :</strong>
+                        <strong style="color: #D32F2F;">❌ Prompt FAIBLE :</strong>
                         <p style="font-style: italic; margin-top: 10px; font-size: 1.05em;">"Parle-moi de la Révolution française"</p>
                         <p style="font-size: 0.95em; margin-top: 8px;">Problème : trop vague, pas de contexte, pas de format</p>
                         
@@ -705,9 +1151,9 @@ Format tableau avec colonnes claires.</div>
                     </div>
 
                     <div class="info-formateur info-box">
-                        <strong style="color: var(--amiral-accent-orange);">⚡ Prompt MOYEN :</strong>
-                        <p style="font-style: italic; margin-top: 10px; color: #92400E;">"Explique-moi les causes de la Révolution française pour des élèves de 4ème en 200 mots."</p>
-                        <p style="font-size: 0.95em; margin-top: 8px; color: #92400E;">Mieux : public cible et contrainte, mais manque de structure et de rôle</p>
+                        <strong style="color: var(--amiral-accent-blue);">⚡ Prompt MOYEN :</strong>
+                        <p style="font-style: italic; margin-top: 10px; color: var(--amiral-blue-dark);">"Explique-moi les causes de la Révolution française pour des élèves de 4ème en 200 mots."</p>
+                        <p style="font-size: 0.95em; margin-top: 8px; color: var(--amiral-blue-dark);">Mieux : public cible et contrainte, mais manque de structure et de rôle</p>
                         
                         <button class="prompt-toggle" onclick="togglePrompt('prompt-moyen-ex')"><i class="fas fa-comment-alt"></i> Afficher le prompt moyen</button>
                         
@@ -737,7 +1183,6 @@ Format :
 Ton : Accessible et engageant</div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -764,10 +1209,10 @@ Ton : Accessible et engageant</div>
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo2-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 5 (LLM)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo2-1', this)"><i class="fas fa-network-wired"></i> Démo 5 : Comment fonctionne un LLM ?</button>
                 
                 <div id="demo2-1" class="demo-box">
-                    <h4><i class="fas fa-network-wired"></i> Démo 5 : Comment fonctionne un LLM ?</h4>
+                    <h4><i class="fas fa-microchip"></i> Démo 5 : Comment fonctionne un LLM ?</h4> 
                     
                     <div class="tool-links">
                         <a href="https://fr.vittascience.com/intelligence-artificielle/" target="_blank" class="tool-btn">
@@ -779,24 +1224,24 @@ Ton : Accessible et engageant</div>
                     <p>Montrer l'entraînement d'un modèle. Faire manipuler.</p>
 
                     <div class="info-learning info-box">
-                        <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">🧠 Concepts clés</h4>
+                        <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-circle-notch"></i> Concepts clés</h4>
                         <ul class="learning-list">
-                            <li><span style="color: var(--amiral-cyan);">🔸</span> <strong>Tokens :</strong> Découpage des mots</li>
-                            <li><span style="color: var(--amiral-cyan);">🔸</span> <strong>Prédiction :</strong> Mot suivant le plus probable</li>
-                            <li><span style="color: var(--amiral-cyan);">🔸</span> <strong>Entraînement :</strong> Milliards de textes</li>
-                            <li><span style="color: var(--amiral-cyan);">🔸</span> <strong>Date de coupure :</strong> Connaissances limitées</li>
+                            <li><span style="color: var(--amiral-teal);">🔹</span> <strong>Tokens :</strong> Découpage des mots</li>
+                            <li><span style="color: var(--amiral-teal);">🔹</span> <strong>Prédiction :</strong> Mot suivant le plus probable</li>
+                            <li><span style="color: var(--amiral-teal);">🔹</span> <strong>Entraînement :</strong> Milliards de textes</li>
+                            <li><span style="color: var(--amiral-teal);">🔹</span> <strong>Date de coupure :</strong> Connaissances limitées</li>
                         </ul>
                     </div>
 
                     <div class="info-warning info-box">
-                        <strong>⚠️ Point crucial :</strong> L'IA n'est <strong>PAS</strong> intelligente au sens humain. Elle calcule des probabilités.
+                        <strong>⚠️ Point crucial :</strong> L'IA n'est **PAS** intelligente au sens humain. Elle calcule des probabilités.
                     </div>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo2-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 6 (Biais)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo2-2', this)"><i class="fas fa-exclamation-triangle"></i> Démo 6 : Les biais en action</button>
                 
                 <div id="demo2-2" class="demo-box">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Démo 6 : Les biais en action</h4>
+                    <h4><i class="fas fa-balance-scale-left"></i> Démo 6 : Les biais en action</h4> 
                     
                     <div class="tool-links">
                         <a href="https://perchance.org/ai-text-to-image-generator" target="_blank" class="tool-btn">
@@ -822,10 +1267,10 @@ Ton : Accessible et engageant</div>
                     </p>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo2-3', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 7 (Hallucinations)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo2-3', this)"><i class="fas fa-skull-crossbones"></i> Démo 7 : Les hallucinations</button>
                 
                 <div id="demo2-3" class="demo-box">
-                    <h4><i class="fas fa-skull-crossbones"></i> Démo 7 : Les hallucinations</h4>
+                    <h4><i class="fas fa-dizzy"></i> Démo 7 : Les hallucinations</h4> 
                     
                     <button class="prompt-toggle" onclick="togglePrompt('prompt-hallucination')"><i class="fas fa-comment-alt"></i> Prompt piège</button>
                     
@@ -835,17 +1280,17 @@ Ton : Accessible et engageant</div>
                     </div>
 
                     <div class="info-warning info-box">
-                        <strong>⚠️ ALERTE :</strong> Galilée n'a <strong>PAS</strong> découvert Vénus ! L'IA peut inventer des dates et sources crédibles pour des faits inexacts.
+                        <strong>⚠️ ALERTE :</strong> Galilée n'a **PAS** découvert Vénus ! L'IA peut inventer des dates et sources crédibles pour des faits inexacts.
                     </div>
                 </div>
 
                 <div class="info-learning info-box" style="margin-top: 40px;">
-                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">🧠 Les différentes générations d'IA</h4>
+                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-sort-amount-up"></i> Les différentes générations d'IA</h4>
                     <ul class="learning-list">
-                        <li><span style="color: var(--amiral-cyan);">🔹</span> <strong>IA symbolique (50-80)</strong> : Règles logiques programmées</li>
-                        <li><span style="color: var(--amiral-cyan);">🔹</span> <strong>Apprentissage automatique (90-2010)</strong> : Apprendre à partir de données</li>
-                        <li><span style="color: var(--amiral-cyan);">🔹</span> <strong>Deep Learning (2010+)</strong> : Réseaux de neurones profonds</li>
-                        <li><span style="color: var(--amiral-cyan);">🔹</span> <strong>IA génératives (2020+)</strong> : Création de contenus</li>
+                        <li><span style="color: var(--amiral-teal);">🔹</span> <strong>IA symbolique (50-80)</strong> : Règles logiques programmées</li>
+                        <li><span style="color: var(--amiral-teal);">🔹</span> <strong>Apprentissage automatique (90-2010)</strong> : Apprendre à partir de données</li>
+                        <li><span style="color: var(--amiral-teal);">🔹</span> <strong>Deep Learning (2010+)</strong> : Réseaux de neurones profonds</li>
+                        <li><span style="color: var(--amiral-teal);">🔹</span> <strong>IA génératives (2020+)</strong> : Création de contenus</li>
                     </ul>
                 </div>
             </div>
@@ -853,7 +1298,7 @@ Ton : Accessible et engageant</div>
 
         <div class="section-card" id="partie3">
             <div class="section-header" onclick="toggleSection(this)">
-                <i class="amiral-icon fas fa-shield-alt"></i>
+                <i class="amiral-icon fas fa-balance-scale"></i>
                 <div class="section-header-content">
                     <div class="section-number">PARTIE 3</div>
                     <h2 class="section-title">Cadre légal & Précautions</h2>
@@ -876,19 +1321,19 @@ Ton : Accessible et engageant</div>
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo3-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 8 (Sécurité)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo3-1', this)"><i class="fas fa-user-shield"></i> Démo 8 : Créer un compte générique</button>
                 
                 <div id="demo3-1" class="demo-box">
-                    <h4><i class="fas fa-user-shield"></i> Démo 8 : Créer un compte générique</h4>
+                    <h4><i class="fas fa-user-lock"></i> Démo 8 : Créer un compte générique</h4> 
                     
                     <div class="info-learning info-box">
-                        <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">✅ Checklist de sécurité</h4>
+                        <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-check-double"></i> Checklist de sécurité</h4>
                         <ul class="learning-list">
-                            <li><span style="color: var(--amiral-cyan);">✓</span> <strong>Compte générique :</strong> classe.taleamc.lyceexxx@gmail.com</li>
-                            <li><span style="color: var(--amiral-cyan);">✓</span> <strong>Pas de données personnelles</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">✓</span> <strong>Ressources publiques uniquement</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">✓</span> <strong>Vérifier les CGU</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">✓</span> <strong>Informer élèves/parents</strong></li>
+                            <li><span style="color: var(--amiral-teal);">✓</span> <strong>Compte générique :</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="80e3ece1f3f3e5aef4e1ece5e1ede3aeecf9e3e5e5f8f8f8c0e7ede1e9ecaee3efed">[email&#160;protected]</a></li>
+                            <li><span style="color: var(--amiral-teal);">✓</span> <strong>Pas de données personnelles</strong></li>
+                            <li><span style="color: var(--amiral-teal);">✓</span> <strong>Ressources publiques uniquement</strong></li>
+                            <li><span style="color: var(--amiral-teal);">✓</span> <strong>Vérifier les CGU</strong></li>
+                            <li><span style="color: var(--amiral-teal);">✓</span> <strong>Informer élèves/parents</strong></li>
                         </ul>
                     </div>
 
@@ -897,10 +1342,10 @@ Ton : Accessible et engageant</div>
                     </div>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo3-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 9 (Impact)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo3-2', this)"><i class="fas fa-leaf"></i> Démo 9 : Impact environnemental</button>
                 
                 <div id="demo3-2" class="demo-box">
-                    <h4><i class="fas fa-globe-americas"></i> Démo 9 : Impact environnemental</h4>
+                    <h4><i class="fas fa-globe-europe"></i> Démo 9 : Impact environnemental</h4> 
                     
                     <div class="tool-links">
                         <a href="https://compareia.culture.gouv.fr/" target="_blank" class="tool-btn">
@@ -912,11 +1357,11 @@ Ton : Accessible et engageant</div>
                     <p>Comparer l'empreinte carbone. 1 requête ChatGPT ≈ 10× Google.</p>
 
                     <div class="info-learning info-box">
-                        <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">🌱 Impact</h4>
+                        <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-seedling"></i> Impact</h4>
                         <ul class="learning-list">
-                            <li><span style="color: var(--amiral-cyan);">🌍</span> <strong>Énergie massive</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">🌍</span> <strong>Eau pour data centers</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">🌍</span> <strong>Métaux rares</strong></li>
+                            <li><span style="color: var(--amiral-teal);">🌍</span> <strong>Énergie massive</strong></li>
+                            <li><span style="color: var(--amiral-teal);">🌍</span> <strong>Eau pour data centers</strong></li>
+                            <li><span style="color: var(--amiral-teal);">🌍</span> <strong>Métaux rares</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -961,10 +1406,10 @@ Ton : Accessible et engageant</div>
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo4-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 10 (Corpus)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo4-1', this)"><i class="fas fa-file-alt"></i> Démo 10 : Analyser un corpus (RAG)</button>
                 
                 <div id="demo4-1" class="demo-box">
-                    <h4><i class="fas fa-file-alt"></i> Démo 10 : Analyser un corpus (RAG)</h4>
+                    <h4><i class="fas fa-book-reader"></i> Démo 10 : Analyser un corpus (RAG)</h4> 
                     
                     <div class="tool-links">
                         <a href="https://chat.openai.com" target="_blank" class="tool-btn"><i class="fas fa-brain"></i> ChatGPT (Plus)</a>
@@ -992,15 +1437,15 @@ Format : Tableau</div>
                     </div>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo4-2', this)"><i class="fas fa-laptop-code"></i> Afficher Démos 11-14 : Workflow complet</button>
+                <button class="reveal-btn" onclick="revealDemo('demo4-2', this)"><i class="fas fa-bezier-curve"></i> Démos 11-14 : Workflow complet</button>
                 
                 <div id="demo4-2" class="demo-box">
-                    <h4><i class="fas fa-bezier-curve"></i> Démos 11-14 : Créer une séquence complète</h4>
+                    <h4><i class="fas fa-cogs"></i> Démos 11-14 : Créer une séquence complète</h4> 
                     
-                    <h5 style="color: var(--amiral-teal); margin: 25px 0 15px 0; font-weight: 700;"><i class="fas fa-search"></i> 1️⃣ Perplexity : Recherche documentaire</h5>
+                    <h5><i class="fas fa-search"></i> 1️⃣ Perplexity : Recherche documentaire</h5>
                     <div class="tool-links">
                         <a href="https://www.perplexity.ai/" target="_blank" class="tool-btn">
-                            🔍 Perplexity <span class="badge badge-free">Gratuit</span>
+                            <i class="fas fa-search"></i> Perplexity <span class="badge badge-free">Gratuit</span>
                         </a>
                     </div>
                     
@@ -1010,26 +1455,26 @@ Format : Tableau</div>
                         <div id="prompt-perplexity-text">Trouve-moi 2 articles sur l'IA avec des points de vue contraires (un optimiste, un critique) et une vidéo YouTube de moins de 5 minutes expliquant le fonctionnement de l'IA pour des lycéens.</div>
                     </div>
 
-                    <h5 style="color: var(--amiral-teal); margin: 25px 0 15px 0; font-weight: 700;"><i class="fas fa-file-invoice"></i> 2️⃣ NotebookLM : Analyse et structure</h5>
+                    <h5><i class="fas fa-file-invoice"></i> 2️⃣ NotebookLM : Analyse et structure</h5>
                     <div class="tool-links">
                         <a href="https://notebooklm.google.com/" target="_blank" class="tool-btn">
-                            🎧 NotebookLM <span class="badge badge-free">Gratuit</span>
+                            <i class="fas fa-book"></i> NotebookLM <span class="badge badge-free">Gratuit</span> 
                         </a>
                     </div>
                     <p>Uploader les documents trouvés et demander une trame de séquence pédagogique.</p>
 
-                    <h5 style="color: var(--amiral-teal); margin: 25px 0 15px 0; font-weight: 700;"><i class="fas fa-presentation"></i> 3️⃣ Gamma AI : Mise en forme</h5>
+                    <h5><i class="fas fa-presentation"></i> 3️⃣ Gamma AI : Mise en forme</h5>
                     <div class="tool-links">
                         <a href="https://gamma.app/" target="_blank" class="tool-btn">
-                            📊 Gamma AI <span class="badge badge-freemium">Freemium</span>
+                            <i class="fas fa-chart-bar"></i> Gamma AI <span class="badge badge-freemium">Freemium</span> 
                         </a>
                     </div>
                     <p>Transformer la trame en présentation visuelle pour le cours.</p>
 
-                    <h5 style="color: var(--amiral-teal); margin: 25px 0 15px 0; font-weight: 700;"><i class="fas fa-clipboard-list"></i> 4️⃣ QuizWizard : Évaluation QCM</h5>
+                    <h5><i class="fas fa-clipboard-list"></i> 4️⃣ QuizWizard : Évaluation QCM</h5>
                     <div class="tool-links">
                         <a href="https://www.getquizwizard.com/" target="_blank" class="tool-btn">
-                            📝 QuizWizard <span class="badge badge-freemium">Freemium</span>
+                            <i class="fas fa-question-circle"></i> QuizWizard <span class="badge badge-freemium">Freemium</span> 
                         </a>
                     </div>
                     
@@ -1040,15 +1485,15 @@ Format : Tableau</div>
                     </div>
 
                     <div class="info-warning info-box">
-                        <strong>⚠️ Important :</strong> L'IA crée une <strong>BASE</strong>. L'enseignant doit <strong>PERSONNALISER</strong> et <strong>VÉRIFIER</strong>.
+                        <strong>⚠️ Important :</strong> L'IA crée une **BASE**. L'enseignant doit **PERSONNALISER** et **VÉRIFIER**.
                     </div>
                 </div>
 
                 <div class="info-learning info-box">
-                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">🔧 Outils complémentaires</h4>
+                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-screwdriver-wrench"></i> Outils complémentaires</h4>
                     <ul class="learning-list">
-                        <li><span style="color: var(--amiral-cyan);">🛠️</span> <strong>Diffit :</strong> Adapter textes - <a href="https://www.diffit.me/" target="_blank" style="color: var(--amiral-cyan); text-decoration: underline;">Visiter</a></li>
-                        <li><span style="color: var(--amiral-cyan);">🛠️</span> <strong>Consensus :</strong> Recherche scientifique - <a href="https://consensus.app/" target="_blank" style="color: var(--amiral-cyan); text-decoration: underline;">Visiter</a></li>
+                        <li><span style="color: var(--amiral-teal);">🛠️</span> <strong>Diffit :</strong> Adapter textes - <a href="https://www.diffit.me/" target="_blank" style="color: var(--amiral-teal); text-decoration: underline;">Visiter</a></li>
+                        <li><span style="color: var(--amiral-teal);">🛠️</span> <strong>Consensus :</strong> Recherche scientifique - <a href="https://consensus.app/" target="_blank" style="color: var(--amiral-teal); text-decoration: underline;">Visiter</a></li>
                     </ul>
                 </div>
             </div>
@@ -1056,7 +1501,7 @@ Format : Tableau</div>
 
         <div class="section-card" id="partie5">
             <div class="section-header" onclick="toggleSection(this)">
-                <i class="amiral-icon fas fa-user-friends"></i>
+                <i class="amiral-icon fas fa-user-graduate"></i>
                 <div class="section-header-content">
                     <div class="section-number">PARTIE 5</div>
                     <h2 class="section-title">IA et Élèves</h2>
@@ -1082,33 +1527,33 @@ Format : Tableau</div>
                     </ul>
                 </div>
 
-                <button class="reveal-btn" onclick="revealDemo('demo5-1', this)"><i class="fas fa-laptop-code"></i> Afficher Démo 15 (Détection)</button>
+                <button class="reveal-btn" onclick="revealDemo('demo5-1', this)"><i class="fas fa-search-dollar"></i> Démo 15 : Repérer un texte IA</button>
                 
                 <div id="demo5-1" class="demo-box">
-                    <h4><i class="fas fa-eye"></i> Démo 15 : Repérer un texte IA</h4>
+                    <h4><i class="fas fa-eye-low-vision"></i> Démo 15 : Repérer un texte IA</h4> 
                     
                     <div class="info-learning info-box">
-                        <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">🔍 Marqueurs possibles (PAS des preuves !)</h4>
+                        <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-hand-point-right"></i> Marqueurs possibles (PAS des preuves !)</h4>
                         <ul class="learning-list">
-                            <li><span style="color: var(--amiral-cyan);">👉</span> <strong>Structure parfaite</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">👉</span> <strong>Vocabulaire générique</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">👉</span> <strong>Manque d'exemples personnels</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">👉</span> <strong>Transitions académiques</strong></li>
-                            <li><span style="color: var(--amiral-cyan);">👉</span> <strong>Absence d'erreurs</strong></li>
+                            <li><span style="color: var(--amiral-teal);">👉</span> <strong>Structure parfaite</strong></li>
+                            <li><span style="color: var(--amiral-teal);">👉</span> <strong>Vocabulaire générique</strong></li>
+                            <li><span style="color: var(--amiral-teal);">👉</span> <strong>Manque d'exemples personnels</strong></li>
+                            <li><span style="color: var(--amiral-teal);">👉</span> <strong>Transitions académiques</strong></li>
+                            <li><span style="color: var(--amiral-teal);">👉</span> <strong>Absence d'erreurs</strong></li>
                         </ul>
                     </div>
 
                     <div class="info-warning info-box">
-                        <strong>⚠️ Important :</strong> Ces marqueurs ne prouvent <strong>RIEN</strong>. Ne <strong>PAS</strong> utiliser de détecteurs.
+                        <strong>⚠️ Important :</strong> Ces marqueurs ne prouvent **RIEN**. Ne **PAS** utiliser de détecteurs.
                     </div>
                 </div>
 
                 <div class="info-learning info-box" style="margin-top: 30px;">
-                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">✨ Transformer l'évaluation</h4>
+                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-splotch"></i> Transformer l'évaluation</h4>
                     <ul class="learning-list">
-                        <li><span style="color: var(--amiral-cyan);">1️⃣</span> <strong>Évaluer le processus (demander le prompt)</strong></li>
-                        <li><span style="color: var(--amiral-cyan);">2️⃣</span> <strong>Consignes "IA-proof" (exemples locaux)</strong></li>
-                        <li><span style="color: var(--amiral-cyan);">3️⃣</span> <strong>Intégrer l'IA dans l'évaluation</strong></li>
+                        <li><span style="color: var(--amiral-teal);">1️⃣</span> <strong>Évaluer le processus (demander le prompt)</strong></li>
+                        <li><span style="color: var(--amiral-teal);">2️⃣</span> <strong>Consignes "IA-proof" (exemples locaux)</strong></li>
+                        <li><span style="color: var(--amiral-teal);">3️⃣</span> <strong>Intégrer l'IA dans l'évaluation</strong></li>
                     </ul>
                 </div>
             </div>
@@ -1116,7 +1561,7 @@ Format : Tableau</div>
 
         <div class="section-card" id="partie6">
             <div class="section-header" onclick="toggleSection(this)">
-                <i class="amiral-icon fas fa-check-circle"></i>
+                <i class="amiral-icon fas fa-award"></i>
                 <div class="section-header-content">
                     <div class="section-number">SYNTHÈSE</div>
                     <h2 class="section-title">Charte & Récapitulatif</h2>
@@ -1136,11 +1581,11 @@ Format : Tableau</div>
                 </div>
 
                 <div class="info-learning info-box">
-                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);">🎯 L'essentiel</h4>
+                    <h4 class="font-bold mb-20" style="color: var(--amiral-teal);"><i class="fas fa-star"></i> L'essentiel</h4>
                     <p style="font-size: 1.1em; line-height: 2;">
-                        L'IA est un <strong style="color: var(--amiral-cyan);">outil puissant</strong> au service de la pédagogie.<br>
-                        Elle doit être utilisée de manière <strong style="color: var(--amiral-cyan);">éclairée, critique et responsable</strong>.<br>
-                        L'enseignant reste <strong style="color: var(--amiral-cyan);">maître de ses choix pédagogiques</strong>.
+                        L'IA est un <strong style="color: var(--amiral-teal);">outil puissant</strong> au service de la pédagogie.<br>
+                        Elle doit être utilisée de manière <strong style="color: var(--amiral-teal);">éclairée, critique et responsable</strong>.<br>
+                        L'enseignant reste <strong style="color: var(--amiral-teal);">maître de ses choix pédagogiques</strong>.
                     </p>
                 </div>
             </div>
@@ -1148,7 +1593,6 @@ Format : Tableau</div>
 
     </div>
 
-    <!-- Modal pour les références -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1159,64 +1603,82 @@ Format : Tableau</div>
         </div>
     </div>
 
-    <!-- SCRIPT JS (Logiciel de l'accordéon/démo, conservé) -->
     <script>
         // Toggle Section
         function toggleSection(header) {
+            console.log('toggleSection appelé');
             const card = header.parentElement;
-            card.classList.toggle('expanded');
+            const is_expanded = card.classList.contains('expanded');
+            console.log('Card expanded:', is_expanded);
             
-            if (card.classList.contains('expanded')) {
-                // Ferme toutes les autres sections sauf celle qui vient d'être ouverte
-                document.querySelectorAll('.section-card').forEach(otherCard => {
-                    if (otherCard !== card) {
-                        otherCard.classList.remove('expanded');
-                    }
-                });
-            }
+            // Ferme toutes les autres sections
+            document.querySelectorAll('.section-card').forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.classList.remove('expanded');
+                    otherCard.querySelectorAll('.demo-box').forEach(d => d.classList.remove('active'));
+                    otherCard.querySelectorAll('.reveal-btn').forEach(b => {
+                        b.classList.remove('used');
+                        const originalText = b.getAttribute('data-original-text');
+                        if (originalText) {
+                             b.innerHTML = originalText;
+                        }
+                    });
+                    otherCard.querySelectorAll('.prompt-box').forEach(p => p.classList.remove('show'));
+                }
+            });
+
+            // Ouvre ou ferme la section cliquée
+            card.classList.toggle('expanded', !is_expanded);
+            console.log('Section toggled, nouveau statut:', !is_expanded);
         }
 
-        // Reveal Demo - Gère l'affichage/masquage d'une seule démo à la fois
+        // Mapping des icônes pour chaque démo
+        const demoIconMap = {
+            'demo1-1': 'fa-robot',
+            'demo1-2': 'fa-laptop-code',
+            'demo1-3': 'fa-sitemap',
+            'demo1-4': 'fa-palette',
+            'prompt-exemples': 'fa-chart-line',
+            'demo2-1': 'fa-network-wired',
+            'demo2-2': 'fa-exclamation-triangle',
+            'demo2-3': 'fa-skull-crossbones',
+            'demo3-1': 'fa-user-shield',
+            'demo3-2': 'fa-leaf',
+            'demo4-1': 'fa-file-alt',
+            'demo4-2': 'fa-bezier-curve',
+            'demo5-1': 'fa-search-dollar'
+        };
+
+        // Reveal Demo
         function revealDemo(demoId, button) {
             const demo = document.getElementById(demoId);
             const is_active = demo.classList.contains('active');
-            
-            const findOriginalText = (btn) => {
-                // Fonction utilitaire pour nettoyer le texte et retrouver le préfixe
-                let text = btn.innerHTML.replace('✓ Affiché', ' Afficher').replace(/<i.*?<\/i>\s*/g, '').trim();
-                let iconHtml = '';
-                if (text.includes('Démo') || text.includes('Workflow')) {
-                    iconHtml = '<i class="fas fa-laptop-code"></i> ';
-                } else if (text.includes('progressifs')) {
-                    iconHtml = '<i class="fas fa-chart-bar"></i> ';
-                }
-                return { text: text, iconHtml: iconHtml };
-            };
-
-            // 1. Cacher toutes les autres démos et réinitialiser les boutons de cette section
             const currentSection = button.closest('.section-content');
-            currentSection.querySelectorAll('.demo-box').forEach(d => {
-                d.classList.remove('active');
-            });
+            
+            // Cacher toutes les autres démos et réinitialiser les boutons de cette section
+            currentSection.querySelectorAll('.demo-box').forEach(d => d.classList.remove('active'));
+            currentSection.querySelectorAll('.prompt-box').forEach(p => p.classList.remove('show'));
             currentSection.querySelectorAll('.reveal-btn').forEach(b => {
-                if (b !== button) {
-                    b.classList.remove('used');
-                    const { text, iconHtml } = findOriginalText(b);
-                    b.innerHTML = iconHtml + text;
+                b.classList.remove('used');
+                const originalText = b.getAttribute('data-original-text');
+                if (originalText) {
+                     b.innerHTML = originalText;
                 }
             });
 
-            // 2. Ouvrir/Fermer la démo actuelle
+            // Ouvrir/Fermer la démo actuelle
             if (!is_active) {
                 demo.classList.add('active');
                 button.classList.add('used');
-                // Remplacer le texte
-                button.innerHTML = button.innerHTML.replace(' Afficher', '✓ Affiché');
-            } else {
-                // Fermer et réinitialiser le texte
-                button.classList.remove('used');
-                const { text, iconHtml } = findOriginalText(button);
-                button.innerHTML = iconHtml + text;
+                
+                if (!button.getAttribute('data-original-text')) {
+                    button.setAttribute('data-original-text', button.innerHTML);
+                }
+                
+                // Obtenir l'icône appropriée
+                const iconClass = demoIconMap[demoId] || 'fa-laptop-code';
+                const originalText = button.getAttribute('data-original-text').replace(/<i.*?<\/i>\s*/, '');
+                button.innerHTML = '<i class="fas fa-check"></i> ' + originalText.replace('Afficher', 'Affiché');
             }
         }
 
@@ -1229,26 +1691,37 @@ Format : Tableau</div>
         // Copy Text
         function copyText(id) {
             const text = document.getElementById(id).innerText;
-            // Utilisez execCommand('copy') pour une compatibilité maximale dans les iframes
-            const tempInput = document.createElement('textarea');
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
             
-            // Simulation d'une alerte ou utiliser une notification custom
-            const copyButton = document.querySelector(`#${id} + .copy-btn`);
-            if (copyButton) {
-                const originalContent = copyButton.innerHTML;
-                copyButton.innerHTML = '<i class="fas fa-check"></i> Copié !';
-                setTimeout(() => {
-                    copyButton.innerHTML = originalContent;
-                }, 1000);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                     showCopyFeedback(document.querySelector(`#${id}`).previousElementSibling);
+                }).catch(err => {
+                    fallbackCopyText(text, document.querySelector(`#${id}`).previousElementSibling);
+                });
+            } else {
+                fallbackCopyText(text, document.querySelector(`#${id}`).previousElementSibling);
             }
         }
 
-        // Modal References (Contenu inchangé)
+        function fallbackCopyText(text, copyButton) {
+             const tempInput = document.createElement('textarea');
+             tempInput.value = text;
+             document.body.appendChild(tempInput);
+             tempInput.select();
+             document.execCommand('copy');
+             document.body.removeChild(tempInput);
+             showCopyFeedback(copyButton);
+        }
+
+        function showCopyFeedback(copyButton) {
+             const originalContent = copyButton.innerHTML;
+             copyButton.innerHTML = '<i class="fas fa-check"></i> Copié !';
+             setTimeout(() => {
+                 copyButton.innerHTML = originalContent;
+             }, 1000);
+        }
+
+        // Modal References
         const refs = {
             ref1: { title: "Cadre MEN p.3", content: '<blockquote>"L\'enseignant reste responsable des contenus utilisés."</blockquote>' },
             ref2: { title: "Cadre MEN p.8", content: '<blockquote>"L\'IA peut assister mais jamais remplacer l\'enseignant."</blockquote>' },
@@ -1287,7 +1760,6 @@ Format : Tableau</div>
         // Progress bar
         window.addEventListener('scroll', function() {
             const windowHeight = window.innerHeight;
-            // Assurez-vous que document.documentElement.scrollHeight est suffisant
             const documentHeight = Math.max(
                 document.body.scrollHeight, 
                 document.documentElement.scrollHeight,
@@ -1301,7 +1773,15 @@ Format : Tableau</div>
             const progress = (scrollTop / documentHeight) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
         });
-
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+             document.querySelectorAll('.reveal-btn').forEach(b => {
+                 if (!b.getAttribute('data-original-text')) {
+                     b.setAttribute('data-original-text', b.innerHTML);
+                 }
+             });
+        });
     </script>
 
 </body>
